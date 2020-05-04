@@ -22,7 +22,7 @@ async function getById(id) {
 async function create(userParam) {
     const user = new Post(userParam);
     user.author = "BLADE";
-    user.id = "123ABC";
+    user.id = Math.random().toString(13).replace('0.', '');
 
     // save user
     await user.save();
