@@ -12,7 +12,7 @@ module.exports = {
     delete: _delete
 };
 async function getAll() {
-    return await Post.find().select('-hash');
+    return await Post.find();
 }
 
 async function getById(id) {
@@ -49,5 +49,8 @@ async function update(id, userParam) {
 }
 
 async function _delete(id) {
-    await Post.findByIdAndRemove(id);
+    await Post.deleteOne({ id: id }, function (err) {
+      if(err) console.log(err);
+      console.log("Successful deletion");
+    });
 }
